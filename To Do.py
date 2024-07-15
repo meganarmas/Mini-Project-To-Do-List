@@ -3,14 +3,13 @@ current_tasks = ['Walk the dog ' '\033[31m Incomplete',
             "\033[37m Go on a run " '\033[32m Complete',
             "\033[37m Clean kitchen " "\033[31m Incomplete"]
 
-def add_task(new_to_do="Incomplete"):
-    if new_to_do is not current_tasks:
-        current_tasks.append({ new_to_do + 'Incomplete'})
-        print(f"{new_to_do} has been added to the to-do list!")
+def add_task(title="Incomplete"):
+    if title is not current_tasks:
+        current_tasks.append(title + ' Incomplete')
+        print(f"{title} has been added to the to-do list")
     else:
-        print(f"{new_to_do} is already in the to-do list.")
+        print(f"{title} is already in the to-do list.")
     
-
 def remove_task(remove_item):
         if remove_item in current_tasks:
             current_tasks.remove(remove_item)
@@ -20,7 +19,7 @@ def remove_task(remove_item):
 
 def to_do_list():
         while True:
-            print("\033[37m Would you like to view list, add items, or removed items?")
+            print("\033[37m Would you like to add tasks, view the current to do list, or remove a take?")
             print("1. Add A Task")
             print("2. View Tasks")
             print("3. Mark Task as Complete")
@@ -29,14 +28,15 @@ def to_do_list():
             choice = input("Enter choice: ")
     
             if choice == '1':
-                user = input("Enter task to add to do list: ")
-                add_task()
+                title = input("Enter task to add to do list: ")
+                add_task(title)
             elif choice == '2':
                 for to_do_task in current_tasks:
                     print(to_do_task)
             elif choice == '3':
+                mark_complete = []
                 try:
-                    mark_complete[] = current_tasks.replace("Incomplete", "Complete")
+                    mark_complete == current_tasks.replace("Incomplete", "Complete")
                     if mark_complete in current_tasks:
                         mark_complete = current_tasks.replace("Incomplete", "\033[32m Complete")
                         print(f"You have completed {mark_complete}! Great job!")
