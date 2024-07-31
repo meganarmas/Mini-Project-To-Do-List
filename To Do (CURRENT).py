@@ -1,3 +1,5 @@
+import re
+
 to_do_list = []
 
 def add_task():
@@ -6,12 +8,16 @@ def add_task():
     print(f"{title_of_todo} has been added to the to-do list")
 
 def complete_task():
-    task_complete = int(input("Enter the task number to mark as complete: ")) -1
-    if 0 <= task_complete < len(to_do_list):
-        to_do_list.replace[("incomplete", "complete")]
-        print("Task marked as complete.")
-    else:
-        print("Invalid task index.")
+    mark_task = input("Enter the task number to mark as completed.")
+    try:
+        index = int(mark_task) - 1
+        if 0 <= index < len(to_do_list):
+            to_do_list[index]['status'] = 'complete'
+            print("Task marked as complete.")
+        else:
+            print("This task has not been added or has already been marked as complete. Please try again!")
+    except ValueError:
+        print("Value error. Please enter a different number.")
 
 def remove_task():
     delete_task = input("Enter the task number to delete: ")
@@ -21,9 +27,9 @@ def remove_task():
             del to_do_list[index]
             print(f"Your task deleted successfully.")
         else:
-            print("Invalid task number. Please enter a correct number.")
+            print("This task has not been added! Please add it first.")
     except ValueError:
-        print("This task has not been added! Please add it first")
+        print("Invalid number. Try again!")
 
 def main():
         while True:
